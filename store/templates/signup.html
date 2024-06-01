@@ -1,10 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<div class="container mt-4">
+    <div class="p-3 m-3">
+        <div class="col-lg-5 rounded mx-auto border pt-4">
+            <div class="text-center col">
+                <img src="https://th.bing.com/th/id/Rd51d7c0fde6d96a31538a86cbd57f3c0?rik=%2fTJxRkU2V371QQ&riu=http%3a%2f%2ftechnologyend.com%2fwp-content%2fuploads%2f2015%2f11%2fwhy-shop-online.jpg&ehk=v1KiYT0i5U1ABCRueDSdLqnazh2BdlVD89Z4qXE0Kgs%3d&risl=&pid=ImgRaw" alt=""
+                class="" style="height: 150px;">
+            <hr>
+            </div>
+            <h3 class="alert alert-success rounded-pill" style="text-align:center">Create an Account</h3>
+            <form action="/signup" method="POST">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+<!--                firstname-->
+                <div class="form-group">
+                    <label for="">First name</label>
+                    <input type="text" name="firstname"
+                    value="{{values.first_name}}" id=""
+                    class="form-control form-control-sm" placeholder="Absalomov">
+                </div>
+<!--                lastname-->
+                <div class="form-group">
+                    <label for="">Last name</label>
+                    <input type="text" name="lastname"
+                    value="{{values.last_name}}" id=""
+                    class="form-control form-control-sm" placeholder="Abbosjon">
+                </div>
+<!--                phone-->
+                <div class="form-group">
+                    <label for="">Phone</label>
+                    <input type="text" name="phone"
+                    value="{{values.phone}}" id=""
+                    class="form-control form-control-sm" placeholder="+998970030107">
+                </div>
+<!--                email-->
+                <div class="form-group">
+                    <label for="">E-mail</label>
+                    <input required type="email" name="email"
+                    value="{{values.email}}" id=""
+                    class="form-control form-control-sm" placeholder="abbosjon@gmail.com">
+                </div>
+<!--                password-->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password"
+                    value="{{values.password}}" id=""
+                    class="form-control form-control-sm" >
+                </div>
+<!--                Checkme button-->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label d-grid gap-2" for="exampleCheck1">Check me out</label>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-sm btn-success col-lg-12">
+                    Create an account
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
