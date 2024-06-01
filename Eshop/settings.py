@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     # local apps
+    'store.apps.StoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -47,8 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # local apps
-    'store.apps.StoreConfig',
+
 ]
 
 ROOT_URLCONF = 'Eshop.urls'

@@ -27,3 +27,25 @@ class Index(View):
         request.session['cart']=cart
         print('cart', request.session['cart'])
         return redirect('homepage')
+
+    def get(self, request):
+        return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
+
+def store(request):
+    cart=request.session.get('cart')
+    if not cart:
+        request.session['cart']={}
+    product=None
+    categories=Category.get_all_categories()
+    categoryID=request.GET.get('category')
+    if categoryID:
+        products=Products.get_all_products_by_categoryid(categoryID)
+    else:
+        producs=Products.get_all_products()
+
+    data={}
+    data['products']=products
+    data['categories']=categories
+
+    print('You are: ', request.session.get('email'))
+    return render(request, 'index.html', data)

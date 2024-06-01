@@ -36,6 +36,6 @@ class Login(View):
         print(email, password)
         return render(request,'login.html')
 
-    def logout(request):
-        request.session.clear()
-        return redirect('login')
+def logout(request):
+    request.session.clear()
+    return redirect('login')
