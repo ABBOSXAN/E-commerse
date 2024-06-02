@@ -41,7 +41,7 @@ class Signup(View):
                 'error': error_message,
                 'values': value
             }
-            return render(request, 'sinup.html', data)
+            return render(request, 'signup.html', data)
 
     def validateCustomer(self, customer):
         error_message = None
